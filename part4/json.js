@@ -1,4 +1,4 @@
-{"teammembers":[
+{"teammembers" [
 	{
 		"name":"Agnes",
 		"title":"Vice President of Accounting",

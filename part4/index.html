@@ -8,7 +8,28 @@
     <!-- jQuery library reference. Latest is always referenced from jQuery's CDN. -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script>
-		// WRITE YOUR CODE HERE
+		$(document).ready(() => {
+            $.ajax({	
+                type: "get",	
+                url: "json.js",	
+                beforeSend: function() {
+                    $("#result").html("Loading...");},	
+                    timeout: 10000,	
+                    error: function(xhr, status, error) {		
+                        alert("Error: " + xhr.status + " - " + error);	
+                    },
+                    dataType: "xml",	
+                    success: function(response) {
+                        $("#result").html("");		
+                        $(response).find("management").children().each(function() {			
+                            $("#result").append( 			
+                                $(this).find("name").text() + "<br>" + 			
+                                $(this).find("title").text() + "<br>" + 			
+                                $(this).find("bio").text() + "<br><br>");		
+                            });	
+                        }
+                    });
+        });
     </script>
 </head>
 
